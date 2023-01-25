@@ -1,0 +1,9 @@
+#cloud-config
+
+users:
+  - name: vadim
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhGIFb523DIKOh2+8sKhSy5RGoZM4xWtHUg+VyZ3Ul5 vadim@wh-v22
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    groups: sudo
+    shell: /bin/bash
