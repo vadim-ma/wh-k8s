@@ -1,0 +1,18 @@
+#cloud-config
+hostname: wh-k8s-m1
+fqdn: wh-k8s-m1
+preserve_hostname: true
+manage_etc_hosts: True
+ssh_pwauth: False
+disable_root: True
+users:
+  - default
+  - name: vadim
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    ssh-authorized-keys:
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhGIFb523DIKOh2+8sKhSy5RGoZM4xWtHUg+VyZ3Ul5 vadim@wh-v22"
+
+runcmd:
+  - [ sh, -c, apt-get update && apt-get install hyperv-daemons]

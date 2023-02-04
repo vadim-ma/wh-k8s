@@ -1,0 +1,21 @@
+#cloud-config
+hostname: cl-debian
+fqdn: cl-debian
+manage_etc_hosts: false
+ssh_pwauth: true
+disable_root: false
+users:
+  - default
+  - name: vadim
+    shell: /bin/bash
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    lock_passwd: false
+    ssh-authorized-keys:
+      - "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJhGIFb523DIKOh2+8sKhSy5RGoZM4xWtHUg+VyZ3Ul5 vadim@wh-v22"
+chpasswd:
+  list: |
+    root:password
+    ubuntu:password
+  expire: false
+#runcmd:
+#  - [ sh, -c, echo 192.168.100.10 cl-ubuntu | tee -a /etc/hosts]
