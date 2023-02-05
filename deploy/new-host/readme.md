@@ -124,11 +124,12 @@ sudo apt-mark hold kubelet kubeadm kubectl
 # Troubleshooting kubeadm
 # Creating a cluster with kubeadm
 ## Initializing your control-plane node
+!!!!!!!! ip a
 ```bash
 sudo kubeadm init \
-    --control-plane-endpoint 192.168.3.14 \
-    # --service-cidr 10.0.0.0/16 \
+    --control-plane-endpoint wh-k8s \
     --pod-network-cidr 10.1.0.0/16
+    # --service-cidr 10.0.0.0/16
 ```
 
 ```
@@ -151,16 +152,14 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 You can now join any number of control-plane nodes by copying certificate authorities
 and service account keys on each node and then running the following as root:
 
-  kubeadm join 192.168.3.14:6443 --token zyu33m.ziwp19drwqldu3gf \
-	--discovery-token-ca-cert-hash sha256:c447fa45d6034cdb6e14131c532b7eb1ca7f70ab17e58a68b0d7299a808225f4 \
-	--control-plane 
+  kubeadm join wh-k8s:6443 --token itno12.rvcq9sjy6xv2abmn \
+        --discovery-token-ca-cert-hash sha256:9082fe0724c103801b53066271457e24e6dc34f15282a7eb53908d854190e228 \
+        --control-plane
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join 192.168.3.14:6443 --token zyu33m.ziwp19drwqldu3gf \
-	--discovery-token-ca-cert-hash sha256:c447fa45d6034cdb6e14131c532b7eb1ca7f70ab17e58a68b0d7299a808225f4 
-
-```
+kubeadm join wh-k8s:6443 --token itno12.rvcq9sjy6xv2abmn \
+        --discovery-token-ca-cert-hash sha256:9082fe0724c103801b53066271457e24e6dc34f15282a7eb53908d854190e228```
 check
 ```
 sudo kubeadm config print init-defaults --component-configs KubeletConfiguration
@@ -173,9 +172,11 @@ cgroupDriver: systemd
 #### requirements
 #### installing
 ```bash
-sudo kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
+kubectl create -f https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/tigera-operator.yaml
 
 curl https://raw.githubusercontent.com/projectcalico/calico/v3.25.0/manifests/custom-resources.yaml -O
+vi custom-resources.yaml
+  cidr: 10.1.0.0/16
 
 kubectl create -f custom-resources.yaml
 

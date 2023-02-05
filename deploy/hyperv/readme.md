@@ -29,7 +29,12 @@ Maka cloud-init iso
             #cloud-localds [options] output user-data [meta-data]
             #cloud-localds -v --network-config=network.yaml cl-ubuntu-seed.qcow2 userdata.yaml
             #cloud-localds -v cl-debian-seed.qcow2 iso/userdata.yaml
-            cloud-localds -v /mnt/d/hv/d1/cloud.iso iso/user-data.m1.yaml iso/meta-data.m1.json
+            cloud-localds -v /mnt/d/hv/k8s-m1/cloud.iso iso/user-data.m1.yaml iso/meta-data.m1.json
+            cloud-localds -v /mnt/d/hv/k8s-m2/cloud.iso iso/user-data.m2.yaml iso/meta-data.m2.json
+            cloud-localds -v /mnt/d/hv/k8s-m3/cloud.iso iso/user-data.m3.yaml iso/meta-data.m3.json
+            cloud-localds -v /mnt/d/hv/k8s-w1/cloud.iso iso/user-data.w1.yaml iso/meta-data.w1.json
+            cloud-localds -v /mnt/d/hv/k8s-w2/cloud.iso iso/user-data.w2.yaml iso/meta-data.w2.json
+            cloud-localds -v /mnt/d/hv/k8s-w3/cloud.iso iso/user-data.w3.yaml iso/meta-data.w3.json
             #- qemu-img convert cl-debian-seed.raw /mnt/d/hv/d1/cloud.iso
 
 
