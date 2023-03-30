@@ -152,14 +152,17 @@ Run "kubectl apply -f [podnetwork].yaml" with one of the options listed at:
 You can now join any number of control-plane nodes by copying certificate authorities
 and service account keys on each node and then running the following as root:
 
-  kubeadm join wh-k8s:6443 --token itno12.rvcq9sjy6xv2abmn \
-        --discovery-token-ca-cert-hash sha256:9082fe0724c103801b53066271457e24e6dc34f15282a7eb53908d854190e228 \
-        --control-plane
+sudo kubeadm join wh-k8s:6443 --token dv9le0.xhsrs6aiuzdt0w88 \
+      --discovery-token-ca-cert-hash sha256:a1aa671e843b88bd2133485d1a76810e22bf6be22bd7087056dd23eff825ee05 \
+      --control-plane
 
 Then you can join any number of worker nodes by running the following on each as root:
 
-kubeadm join wh-k8s:6443 --token itno12.rvcq9sjy6xv2abmn \
-        --discovery-token-ca-cert-hash sha256:9082fe0724c103801b53066271457e24e6dc34f15282a7eb53908d854190e228```
+sudo kubeadm join wh-k8s:6443 --token dv9le0.xhsrs6aiuzdt0w88 \
+        --discovery-token-ca-cert-hash sha256:a1aa671e843b88bd2133485d1a76810e22bf6be22bd7087056dd23eff825ee05
+```
+
+
 check
 ```
 sudo kubeadm config print init-defaults --component-configs KubeletConfiguration
@@ -181,4 +184,15 @@ vi custom-resources.yaml
 kubectl create -f custom-resources.yaml
 
 rm custom-resources.yaml
+```
+
+```bash
+scp wh-k8s-m1:certs.tar.gz wh-k8s-m2:
+scp wh-k8s-m1:certs.tar.gz wh-k8s-m3:
+
+scp /home/vadim/p/whs/wh-k8s/deploy/new-host/add-master.sh wh-k8s-m2:
+scp /home/vadim/p/whs/wh-k8s/deploy/new-host/add-master.sh wh-k8s-m3:
+scp /home/vadim/p/whs/wh-k8s/deploy/new-host/add-worker.sh wh-k8s-w1:
+scp /home/vadim/p/whs/wh-k8s/deploy/new-host/add-worker.sh wh-k8s-w2:
+scp /home/vadim/p/whs/wh-k8s/deploy/new-host/add-worker.sh wh-k8s-w3:
 ```

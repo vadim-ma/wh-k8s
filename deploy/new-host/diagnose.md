@@ -13,6 +13,9 @@ ps xa  | grep -E '(kube-apiserver|etcd|kube-proxy|kube-controller-manager|kube-s
     kubectl get cm kubeadm-config -n kube-system -o yaml
     kubectl config view
     kubectl config view --flatten
+
+    kubectl cluster-info
+    kubectl cluster-info dump
 * services
     sudo systemctl status kubelet
 * 

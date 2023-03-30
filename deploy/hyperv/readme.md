@@ -17,7 +17,7 @@ Create Debian 11 (Bullseye) KVM Guest From Cloud Image
 https://blog.programster.org/create-debian-11-kvm-guest-from-cloud-image
 
 
-Maka cloud-init iso 
+Make cloud-init iso 
     meta-data
     user-data
     generate iso file (1 or 2)
@@ -41,3 +41,4 @@ Maka cloud-init iso
 Create VM
     secure boot - Microsoft UEFI Sertificaate Authority or None
 
+ apt-get install hyperv-daemons

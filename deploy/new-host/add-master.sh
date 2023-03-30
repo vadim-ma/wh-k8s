@@ -50,9 +50,9 @@ sudo tar xvzf ~/certs.tar.gz
 rm ~/certs.tar.gz
 cd ~
 
-sudo kubeadm join wh-k8s:6443 --token itno12.rvcq9sjy6xv2abmn \
-    --discovery-token-ca-cert-hash sha256:9082fe0724c103801b53066271457e24e6dc34f15282a7eb53908d854190e228 \
-    --control-plane
+sudo kubeadm join wh-k8s:6443 --token dv9le0.xhsrs6aiuzdt0w88 \
+      --discovery-token-ca-cert-hash sha256:a1aa671e843b88bd2133485d1a76810e22bf6be22bd7087056dd23eff825ee05 \
+      --control-plane
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config

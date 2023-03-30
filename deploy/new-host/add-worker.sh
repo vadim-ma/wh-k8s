@@ -42,11 +42,11 @@ sudo sysctl --system
 sudo curl -fsSLo /etc/apt/keyrings/kubernetes-archive-keyring.gpg https://packages.cloud.google.com/apt/doc/apt-key.gpg
 echo "deb [signed-by=/etc/apt/keyrings/kubernetes-archive-keyring.gpg] https://apt.kubernetes.io/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list > /dev/null
 sudo apt-get -y update
-sudo apt-get -y install kubelet kubeadm kubectl
-sudo apt-mark hold kubelet kubeadm kubectl
+sudo apt-get -y install kubelet kubeadm
+sudo apt-mark hold kubelet kubeadm
 
-sudo kubeadm join wh-k8s:6443 --token itno12.rvcq9sjy6xv2abmn \
-    --discovery-token-ca-cert-hash sha256:9082fe0724c103801b53066271457e24e6dc34f15282a7eb53908d854190e228
+sudo kubeadm join wh-k8s:6443 --token dv9le0.xhsrs6aiuzdt0w88 \
+        --discovery-token-ca-cert-hash sha256:a1aa671e843b88bd2133485d1a76810e22bf6be22bd7087056dd23eff825ee05
 
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
